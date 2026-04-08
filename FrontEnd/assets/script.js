@@ -1,5 +1,5 @@
 
-
+///////////ETAPE 2/////////
 async function getWorks(){
     // étape 1 : appel à l'API avec fetch //
 const reponse = await fetch("http://localhost:5678/api/works");
@@ -18,7 +18,7 @@ const gallery = document.querySelector(".gallery");
         const img = document.createElement("img");
         const figcaption = document.createElement("figcaption");
 
-        // je met les données du travaile dans les balises//
+        // je met les données du travail dans les balises//
         img.src = work.imageUrl;
         img.alt = work.title;
         figcaption.textContent = work.title;
@@ -29,5 +29,35 @@ const gallery = document.querySelector(".gallery");
         gallery.appendChild(figure);
     }
 }
-
 getWorks()
+
+////Etapes 3////
+async function getCategories(){
+
+    // étape 1 : appel à l'API pour récupérer les catégories
+    const reponse = await fetch("http://localhost:5678/api/categories");
+
+    // on transforme la réponse
+    const categories = await reponse.json();
+
+    // je cherche la div filters dans le HTML
+    const filters = document.querySelector(".filters");
+
+    // je crée le bouton Tous
+    const buttonTous = document.createElement("button");
+    buttonTous.textContent = "Tous";
+    filters.appendChild(buttonTous);
+
+    // pour chaque catégorie je crée un bouton
+    for (const categorie of categories) {
+
+        // je crée le bouton
+        const button = document.createElement("button");
+        button.textContent = categorie.name;
+        filters.appendChild(button);
+    }
+}
+getCategories();
+
+
+
