@@ -198,10 +198,14 @@ footer nav ul {
 
 .filters button {
     border: 1px solid #1D6154;
-    border-radius: 60px;
-    padding: 10px 20px;
+    border-radius: 20px;
+    padding: 5px 15px;
     color: #1D6154;
     background-color: white;
     cursor: pointer;
 	font-weight: bold;
+}
+.filters button.clique {
+    background-color: #1D6154;
+    color: white;
 }
