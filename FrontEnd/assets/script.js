@@ -1,7 +1,28 @@
 
 // je mets works ici pour pouvoir l'utiliser dans toutes les fonctions//
 let works = [];
+// je vérifie si l'utilisateur est connecté (etape 5.3)//
+const token = localStorage.getItem("token");
 
+if (token) {
+    // je change login en logout
+    const loginItem = document.getElementById("login-item");
+    loginItem.textContent = "logout";
+
+    // j'affiche le bandeau mode édition
+    const bandeauEdition = document.getElementById("bandeau-edition");
+    bandeauEdition.style.display = "block";
+
+    // j'affiche le bouton modifier
+    const btnModifier = document.getElementById("btn-modifier");
+    btnModifier.style.display = "block";
+
+    // au clic sur logout je déconnecte
+    loginItem.addEventListener("click", function() {
+        localStorage.removeItem("token");
+        window.location.href = "index.html";
+    });
+}
 // je cherche la galerie dans le HTML//
 const gallery = document.querySelector(".gallery");
 
@@ -77,6 +98,14 @@ async function getCategories(){
 });
     }
 }
+/////ETAPE 5.3////
+getCategories().then(function() {
+    if (token) {
+        // je cache les filtres
+        const filters = document.querySelector(".filters");
+        filters.style.display = "none";
+    }
+});
 
-getCategories();
+
 

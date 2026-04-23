@@ -253,3 +253,51 @@ footer nav ul {
     font-weight: 700;
     cursor: pointer;
 }
+/* style du bandeau noir */
+#bandeau-edition {
+    display: none;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+}
+
+/* style du titre  */
+#titre-portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#btn-modifier {
+    border: none;
+    background: none;
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+}
+/* style du titre  */
+
+#portfolio h2 {
+    margin-bottom: 0;
+}
+
+#portfolio {
+    text-align: center;
+}
+
+#btn-modifier {
+    border: none;
+    background: none;
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+}
