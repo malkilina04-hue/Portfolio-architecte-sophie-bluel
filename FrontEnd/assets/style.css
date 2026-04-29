@@ -188,7 +188,14 @@ footer nav ul {
 
 /**************PROJET*******************/
 
-/* style des boutons filtres */
+/* NAVIGATION  */
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Style des boutons filtres */
+
 .filters {
     display: flex;
     gap: 10px;
@@ -205,14 +212,55 @@ footer nav ul {
     color: #1D6154;
     background-color: white;
     cursor: pointer;
-	font-weight: bold;
+    font-weight: bold;
 }
+
 .filters button.clique {
     background-color: #1D6154;
     color: white;
 }
 
-/* style de la page login */
+/* Style du titre portfolio */
+#portfolio {
+    text-align: center;
+}
+
+#portfolio h2 {
+    margin-bottom: 0;
+}
+
+#titre-portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#btn-modifier {
+    border: none;
+    background: none;
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* BANDEAU MODE EDITION */
+#bandeau-edition {
+    display: none;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+}
+
+/* STYLE PAGE LOGIN */
 #login {
     width: 30%;
     margin: auto;
@@ -221,10 +269,6 @@ footer nav ul {
 
 #login h2 {
     margin-bottom: 30px;
-}
-
-#login a {
-    color: black;
 }
 
 #login form {
@@ -253,51 +297,20 @@ footer nav ul {
     font-weight: 700;
     cursor: pointer;
 }
-/* style du bandeau noir */
-#bandeau-edition {
+
+#login a {
+    color: black;
+    text-align: center;
+    display: block;
+}
+
+#message-erreur {
     display: none;
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
+    color: red;
 }
 
-/* style du titre  */
-#titre-portfolio {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
-}
 
-#btn-modifier {
-    border: none;
-    background: none;
-    color: black;
-    cursor: pointer;
-    font-size: 14px;
-}
-/* style du titre  */
 
-#portfolio h2 {
-    margin-bottom: 0;
-}
 
-#portfolio {
-    text-align: center;
-}
 
-#btn-modifier {
-    border: none;
-    background: none;
-    color: black;
-    cursor: pointer;
-    font-size: 14px;
-}
+

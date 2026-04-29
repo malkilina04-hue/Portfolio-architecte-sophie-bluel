@@ -29,7 +29,7 @@ formulaire.addEventListener("submit", async function(event) {
         window.location.href = "index.html";
     } else {
         // si l'identifiant ou mot de passe sont incorrects j'affiche un message d'erreur//
-        alert("Identifiants ou mot de passe incorrects");
+        document.getElementById("message-erreur").style.display = "block";
     }
 });
 

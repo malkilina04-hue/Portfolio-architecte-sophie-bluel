@@ -1,9 +1,9 @@
 
 // je mets works ici pour pouvoir l'utiliser dans toutes les fonctions//
 let works = [];
+
 // je vérifie si l'utilisateur est connecté (etape 5.3)//
 const token = localStorage.getItem("token");
-
 if (token) {
     // je change login en logout
     const loginItem = document.getElementById("login-item");
@@ -23,6 +23,7 @@ if (token) {
         window.location.href = "index.html";
     });
 }
+
 // je cherche la galerie dans le HTML//
 const gallery = document.querySelector(".gallery");
 
@@ -101,7 +102,7 @@ async function getCategories(){
 /////ETAPE 5.3////
 getCategories().then(function() {
     if (token) {
-        // je cache les filtres
+        // je cache les filtres//
         const filters = document.querySelector(".filters");
         filters.style.display = "none";
     }
