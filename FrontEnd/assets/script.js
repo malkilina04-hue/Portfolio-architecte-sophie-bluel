@@ -28,7 +28,7 @@ if (token) {
 // je cherche la galerie dans le HTML//
 const gallery = document.querySelector(".gallery");
 
-///////////ETAPE 2////////Modifier//
+/////////// ETAPE 2 ////////Modifier//
 async function getWorks(){
     // j'appelle l'API pour avoir les travaux//
     const reponse = await fetch("http://localhost:5678/api/works");
@@ -40,11 +40,11 @@ async function getWorks(){
 
 // je crée une fonction pour afficher les travaux dans la galerie//
 function afficherWorks(listeTravaux) {
-    // je vide la galerie avant d'afficher//
+    // je vide la galerie avant d'afficher //
     gallery.innerHTML = "";
-    // pour chaque travail je crée les balises//
+    // pour chaque travail je crée les balises //
     for (const work of listeTravaux) {
-        // je crée les 3 balises du HTML de base//
+        // je crée les 3 balises du HTML de base //
         const figure = document.createElement("figure");
         const img = document.createElement("img");
         const figcaption = document.createElement("figcaption");
@@ -153,4 +153,24 @@ const btnRetour = document.getElementById("btn-retour");
 btnRetour.addEventListener("click", function() {
     modaleFormulaire.classList.add("hidden");
     modaleGalerie.classList.remove("hidden");
+});
+
+// j'affiche les photos dans la modale //
+function afficherPhotosModale() {
+    const modalePhotos = document.getElementById("modale-photos");
+    modalePhotos.innerHTML = "";
+    
+    for (const work of works) {
+        const img = document.createElement("img");
+        img.src = work.imageUrl;
+        img.alt = work.title;
+        modalePhotos.appendChild(img);
+    }
+}
+
+btnModifierModal.addEventListener("click", function() {
+    modaleGalerie.classList.remove("hidden");
+    modaleFormulaire.classList.add("hidden");
+    modale.classList.remove("hidden");
+    afficherPhotosModale(); // j'affiche les photos //
 });

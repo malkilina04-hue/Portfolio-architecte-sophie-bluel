@@ -358,6 +358,22 @@ nav img {
 	text-align: center;
 }
 
+#modale-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#modale-photos img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+
+
+
 #btn-retour {
     border: none;
     background: none;
