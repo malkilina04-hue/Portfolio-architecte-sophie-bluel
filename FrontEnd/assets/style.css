@@ -193,7 +193,9 @@ nav a {
     text-decoration: none;
     color: inherit;
 }
-
+nav img {
+    width: 20px;
+}
 /* Style des boutons filtres */
 
 .filters {
@@ -307,6 +309,8 @@ nav a {
 #message-erreur {
     display: none;
     color: red;
+    text-align: center;
+    margin-top: 10px;
 }
 
 /* MODALE */
@@ -347,6 +351,13 @@ nav a {
     font-size: 20px;
 }
 
+#modale h2 {
+    color: black;
+    font-size: 20px;
+    font-family: 'Syne';
+	text-align: center;
+}
+
 #btn-retour {
     border: none;
     background: none;
@@ -354,3 +365,13 @@ nav a {
     font-size: 20px;
 }
 
+#btn-ajouter-photo {
+    background-color: #1D6154;
+    color: white;
+    border: none;
+    border-radius: 60px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Syne';
+    font-weight: 700;
+}

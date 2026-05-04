@@ -34,7 +34,7 @@ async function getWorks(){
     const reponse = await fetch("http://localhost:5678/api/works");
     // je lis les données reçues du serveur
     works = await reponse.json();
-    // // j'affiche tous les travaux dans la galerie//
+    // j'affiche tous les travaux dans la galerie //
     afficherWorks(works);
 }
 
@@ -110,27 +110,27 @@ getCategories().then(function() {
 });
 
 
-// ETAPE 6 - MODALE
-// je cherche les éléments de la modale
+// ///// /ETAPE 6 - MODALE ///////
+// je cherche les éléments de la modale //
 const modale = document.getElementById("modale");
 const btnFermer = document.getElementById("modale-fermer");
 const btnModifierModal = document.getElementById("btn-modifier");
 
-// j'ouvre la modale au clic sur le bouton modifier
+// j'ouvre la modale au clic sur le bouton modifier //
 btnModifierModal.addEventListener("click", function() {
-    // je remets la galerie par défaut
+    // je remets la galerie par défaut //
     modaleGalerie.classList.remove("hidden");
     modaleFormulaire.classList.add("hidden");
-    // j'ouvre la modale
+    // j'ouvre la modale //
     modale.classList.remove("hidden");
 });
 
-// je ferme la modale au clic sur la croix
+// je ferme la modale au clic sur la croix //
 btnFermer.addEventListener("click", function() {
     modale.classList.add("hidden");
 });
 
-// je ferme la modale au clic en dehors
+// je ferme la modale au clic en dehors //
 modale.addEventListener("click", function(event) {
     if (event.target === modale) {
         modale.classList.add("hidden");
@@ -142,13 +142,13 @@ const btnAjouterPhoto = document.getElementById("btn-ajouter-photo");
 const modaleGalerie = document.getElementById("modale-galerie");
 const modaleFormulaire = document.getElementById("modale-formulaire");
 
-// au clic sur "Ajouter une photo" j'affiche le formulaire
+// au clic sur "Ajouter une photo" j'affiche le formulaire //
 btnAjouterPhoto.addEventListener("click", function() {
     modaleGalerie.classList.add("hidden");
     modaleFormulaire.classList.remove("hidden");
 });
 
-// au clic sur la flèche je reviens à la galerie
+// au clic sur la flèche je reviens à la galerie //
 const btnRetour = document.getElementById("btn-retour");
 btnRetour.addEventListener("click", function() {
     modaleFormulaire.classList.add("hidden");
