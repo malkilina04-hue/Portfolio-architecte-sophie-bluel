@@ -115,6 +115,12 @@ getCategories().then(function() {
 const modale = document.getElementById("modale");
 const btnFermer = document.getElementById("modale-fermer");
 const btnModifierModal = document.getElementById("btn-modifier");
+// je cherche les boutons et zones de la modale
+const btnAjouterPhoto = document.getElementById("btn-ajouter-photo");
+const modaleGalerie = document.getElementById("modale-galerie");
+const modaleFormulaire = document.getElementById("modale-formulaire");
+// au clic sur la flèche je reviens à la galerie //
+const btnRetour = document.getElementById("btn-retour");
 
 // j'ouvre la modale au clic sur le bouton modifier //
 btnModifierModal.addEventListener("click", function() {
@@ -123,6 +129,7 @@ btnModifierModal.addEventListener("click", function() {
     modaleFormulaire.classList.add("hidden");
     // j'ouvre la modale //
     modale.classList.remove("hidden");
+    afficherPhotosModale(); // j'affiche les photos //
 });
 
 // je ferme la modale au clic sur la croix //
@@ -137,19 +144,12 @@ modale.addEventListener("click", function(event) {
     }
 });
 
-// je cherche les boutons et zones de la modale
-const btnAjouterPhoto = document.getElementById("btn-ajouter-photo");
-const modaleGalerie = document.getElementById("modale-galerie");
-const modaleFormulaire = document.getElementById("modale-formulaire");
-
 // au clic sur "Ajouter une photo" j'affiche le formulaire //
 btnAjouterPhoto.addEventListener("click", function() {
     modaleGalerie.classList.add("hidden");
     modaleFormulaire.classList.remove("hidden");
 });
 
-// au clic sur la flèche je reviens à la galerie //
-const btnRetour = document.getElementById("btn-retour");
 btnRetour.addEventListener("click", function() {
     modaleFormulaire.classList.add("hidden");
     modaleGalerie.classList.remove("hidden");
@@ -168,9 +168,19 @@ function afficherPhotosModale() {
     }
 }
 
-btnModifierModal.addEventListener("click", function() {
-    modaleGalerie.classList.remove("hidden");
-    modaleFormulaire.classList.add("hidden");
-    modale.classList.remove("hidden");
-    afficherPhotosModale(); // j'affiche les photos //
-});
+////////ETAPE 8
+// je remplis le menu catégorie avec les données de l'API
+async function remplirCategories() {
+    const reponse = await fetch("http://localhost:5678/api/categories");
+    const categories = await reponse.json();
+    const select = document.getElementById("categorie");
+    
+    for (const categorie of categories) {
+        const option = document.createElement("option");
+        option.value = categorie.id;
+        option.textContent = categorie.name;
+        select.appendChild(option);
+    }
+}
+
+remplirCategories();

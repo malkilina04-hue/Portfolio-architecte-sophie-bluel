@@ -335,10 +335,12 @@ nav img {
 
 #modale-contenu {
     background-color: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     width: 500px;
     position: relative;
+    max-width: 95vh;
+    overflow-y: auto;
 }
 
 #modale-fermer {
@@ -352,10 +354,11 @@ nav img {
 }
 
 #modale h2 {
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 25px;
+    text-align: center;
     color: black;
-    font-size: 20px;
-    font-family: 'Syne';
-	text-align: center;
 }
 
 #modale-photos {
@@ -370,9 +373,6 @@ nav img {
     height: 120px;
     object-fit: cover;
 }
-
-
-
 
 #btn-retour {
     border: none;
@@ -390,4 +390,107 @@ nav img {
     cursor: pointer;
     font-family: 'Syne';
     font-weight: 700;
+}
+
+/* FORMULAIRE AJOUT PHOTO */
+#zone-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e8f1f6;
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 5px;
+    width: 65%;
+}
+#zone-upload i {
+    font-size: 60px;
+    color: #B9C5CC;
+    margin-bottom: 10px;
+}
+
+#zone-upload input[type="file"] {
+    display: none;
+}
+
+#zone-upload label {
+    background-color: #CBD6DC;
+    color:#306685;
+    padding: 8px 35px;
+    border-radius: 60px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+#formulaire-ajout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#formulaire-ajout > label {
+    width: 80%;
+    margin: 10px 0 8px 0;
+    text-align: left;
+}
+
+
+#formulaire-ajout input[type="text"] {
+    width: 80%;
+    height: 51px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+    margin-bottom: 15px;
+}
+
+
+#btn-valider {
+    display: block;
+    margin: 20px auto;
+    background-color: #ccc;
+    color: white;
+    border: none;
+    border-radius: 60px;
+    padding: 10px 80px;
+    cursor: pointer;
+    font-family: 'Syne';
+    font-weight: 700;
+}
+
+.select-container {
+    width: 80%;
+    position: relative;
+}
+
+.select-container select {
+    width: 100%;
+    height: 51px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 35px 5px 10px;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+    appearance: none;
+}
+
+.select-container i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 11px;
+}
+
+#formulaire-ajout hr {
+    width: 80%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 40px 0 10px 0;
 }
