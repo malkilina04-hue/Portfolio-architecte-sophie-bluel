@@ -196,8 +196,8 @@ nav a {
 nav img {
     width: 20px;
 }
-/* Style des boutons filtres */
 
+/* Style des boutons filtres */
 .filters {
     display: flex;
     gap: 10px;
@@ -339,6 +339,7 @@ nav img {
     border-radius: 10px;
     width: 500px;
     transform: scale(0.65);
+    position: relative
 }
 
 #modale-fermer {
@@ -361,6 +362,7 @@ nav img {
     margin-bottom: 25px;
 }
 
+/*MODALE GALERIE*/
 #modale-photos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -375,14 +377,10 @@ nav img {
     object-fit: cover;
 }
 
-#btn-retour {
+#hr-galerie {
     border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 25px;
-    position: absolute;
-    left: 20px;
-    top: 20px;
+    border-top: 1px solid #B3B3B3;
+    margin: 0 0 30px 0;
 }
 
 #btn-ajouter-photo {
@@ -398,7 +396,17 @@ nav img {
     margin: 40px auto 30px auto;
 }
 
-/* FORMULAIRE AJOUT PHOTO */
+/*MODALE FORMULAIRE AJOUT PHOTO*/
+#btn-retour {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 25px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
 #zone-upload {
     display: flex;
     flex-direction: column;
@@ -408,6 +416,7 @@ nav img {
     margin: 10px auto;
     border-radius: 5px;
     width: 75%;
+    overflow: hidden
 }
 #zone-upload i {
     font-size: 60px;
@@ -454,18 +463,11 @@ nav img {
     margin-bottom: 15px;
 }
 
-
-#btn-valider {
-    display: block;
-    margin: 20px auto;
-    background-color: #ccc;
-    color: white;
+#formulaire-ajout hr {
+    width: 80%;
     border: none;
-    border-radius: 60px;
-    padding: 10px 80px;
-    cursor: pointer;
-    font-family: 'Syne';
-    font-weight: 700;
+    border-top: 1px solid #ccc;
+    margin: 40px 0 10px 0;
 }
 
 .select-container {
@@ -494,15 +496,24 @@ nav img {
     font-size: 11px;
 }
 
-#formulaire-ajout hr {
-    width: 80%;
+#btn-valider {
+    display: block;
+    margin: 20px auto;
+    background-color: #ccc;
+    color: white;
     border: none;
-    border-top: 1px solid #ccc;
-    margin: 40px 0 10px 0;
+    border-radius: 60px;
+    padding: 10px 80px;
+    cursor: pointer;
+    font-family: 'Syne';
+    font-weight: 700;
 }
 
-#hr-galerie {
-    border: none;
-    border-top: 1px solid #B3B3B3;
-    margin: 0 0 30px 0;
+#preview {
+    height: 169px;
+    width: auto;
+    max-width: 80%;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
 }

@@ -135,12 +135,16 @@ btnModifierModal.addEventListener("click", function() {
 // je ferme la modale au clic sur la croix //
 btnFermer.addEventListener("click", function() {
     modale.classList.add("hidden");
+    reinitialiserFormulaire();
+
 });
 
 // je ferme la modale au clic en dehors //
 modale.addEventListener("click", function(event) {
     if (event.target === modale) {
         modale.classList.add("hidden");
+        reinitialiserFormulaire();
+
     }
 });
 
@@ -168,8 +172,8 @@ function afficherPhotosModale() {
     }
 }
 
-////////ETAPE 8
-// je remplis le menu catégorie avec les données de l'API
+////////ETAPE 8////
+// je remplis le menu catégorie avec les données de l'API //
 async function remplirCategories() {
     const reponse = await fetch("http://localhost:5678/api/categories");
     const categories = await reponse.json();
@@ -184,3 +188,75 @@ async function remplirCategories() {
 }
 
 remplirCategories();
+
+// je récupère l'input et la preview //
+const input = document.getElementById("input-image");
+const preview = document.getElementById("preview");
+
+// quand on sélectionne une image je l'affiche en preview //
+input.addEventListener("change", function(event) {
+    // je récupère le fichier sélectionné
+    const file = event.target.files[0];
+    // si pas de fichier je m'arrête //
+    if (!file) return;
+    // je crée un lien temporaire pour afficher l'image //
+    const imageUrl = URL.createObjectURL(file);
+
+    // j'affiche la preview //
+    preview.src = imageUrl;
+    preview.style.display = "block";
+
+    // je cache l'icône, le bouton et le texte //
+    document.getElementById("icone-upload").style.display = "none";
+    document.querySelector("#zone-upload label").style.display = "none";
+    document.querySelector("#zone-upload p").style.display = "none";
+    document.getElementById("zone-upload").style.padding = "0";
+    verifierFormulaire();;
+});
+
+const form = document.getElementById("formulaire-ajout");
+form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const reponse = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + token
+        },
+        body: formData
+    });
+    if (reponse.ok) {
+        const newWork = await reponse.json();
+        works.push(newWork);
+        afficherWorks(works);
+        modale.classList.add("hidden");
+        reinitialiserFormulaire();
+    } else {
+        console.log("Erreur status:", reponse.status);
+    }
+});
+// je vérifie si le formulaire est complet //
+const inputTitre = document.getElementById("titre");
+const inputCategorie = document.getElementById("categorie");
+
+function verifierFormulaire() {
+    if (input.files[0] && inputTitre.value && inputCategorie.value) {
+        document.getElementById("btn-valider").style.backgroundColor = "#1D6154";
+    } else {
+        document.getElementById("btn-valider").style.backgroundColor = "#ccc";
+    }
+}
+
+inputTitre.addEventListener("input", verifierFormulaire);
+inputCategorie.addEventListener("change", verifierFormulaire);
+
+// je réinitialise le formulaire //
+function reinitialiserFormulaire() {
+    document.getElementById("formulaire-ajout").reset();
+    preview.style.display = "none";
+    document.getElementById("icone-upload").style.display = "block";
+    document.querySelector("#zone-upload label").style.display = "block";
+    document.querySelector("#zone-upload p").style.display = "block";
+    document.getElementById("zone-upload").style.padding = "30px";
+    document.getElementById("btn-valider").style.backgroundColor = "#ccc";
+}
