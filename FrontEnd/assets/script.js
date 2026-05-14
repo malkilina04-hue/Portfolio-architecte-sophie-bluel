@@ -260,3 +260,48 @@ function reinitialiserFormulaire() {
     document.getElementById("zone-upload").style.padding = "30px";
     document.getElementById("btn-valider").style.backgroundColor = "#ccc";
 }
+
+////// ETAPE 7 //////
+// j'affiche les photos dans la modale avec les boutons supprimer 
+function afficherPhotosModale() {
+    const modalePhotos = document.getElementById("modale-photos");
+    modalePhotos.innerHTML = "";
+    
+    for (const work of works) {
+        // je crée un conteneur pour l'image et la poubelle //
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        const btnSupprimer = document.createElement("button");
+        
+        img.src = work.imageUrl;
+        img.alt = work.title;
+        
+        // j'ajoute l'icône poubelle //
+        btnSupprimer.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        
+        // au clic sur la poubelle je supprime le travail //
+        btnSupprimer.addEventListener("click", async function() {
+            const reponse = await fetch("http://localhost:5678/api/works/" + work.id, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            });
+            
+            if (reponse.ok) {
+                // je supprime le travail de la liste //
+                works = works.filter(function(travail) {
+                    return travail.id !== work.id;
+                });
+                // je réaffiche la galerie principale /
+                afficherWorks(works);
+                // je réaffiche les photos de la modale //
+                afficherPhotosModale();
+            }
+        });
+        
+        figure.appendChild(img);
+        figure.appendChild(btnSupprimer);
+        modalePhotos.appendChild(figure);
+    }
+}

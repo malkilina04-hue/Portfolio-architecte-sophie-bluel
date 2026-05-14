@@ -517,3 +517,21 @@ nav img {
     border-radius: 0;
     display: block;
 }
+
+/* ETAPE 7 - SUPPRESSION */
+#modale-photos figure {
+    position: relative;
+    margin: 0;
+}
+
+#modale-photos figure button {
+    position: absolute;
+    left: 65px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    top: 5px;
+}
