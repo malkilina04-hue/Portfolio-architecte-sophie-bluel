@@ -535,3 +535,10 @@ nav img {
     cursor: pointer;
     top: 5px;
 }
+
+#message-erreur-formulaire {
+    display: none;
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}

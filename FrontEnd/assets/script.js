@@ -217,6 +217,14 @@ input.addEventListener("change", function(event) {
 const form = document.getElementById("formulaire-ajout");
 form.addEventListener("submit", async function(event) {
     event.preventDefault();
+    // je vérifie si le formulaire est complet
+    if (!input.files[0] || !inputTitre.value || !inputCategorie.value) {
+        document.getElementById("message-erreur-formulaire").style.display = "block";
+        return;
+    }
+    
+    // je cache le message d'erreur
+    document.getElementById("message-erreur-formulaire").style.display = "none";
     const formData = new FormData(form);
     const reponse = await fetch("http://localhost:5678/api/works", {
         method: "POST",
@@ -225,16 +233,20 @@ form.addEventListener("submit", async function(event) {
         },
         body: formData
     });
+
+        // ETAPE 8.2 - j'affiche aussi dans la modale //
     if (reponse.ok) {
         const newWork = await reponse.json();
         works.push(newWork);
         afficherWorks(works);
+        afficherPhotosModale();
         modale.classList.add("hidden");
         reinitialiserFormulaire();
     } else {
         console.log("Erreur status:", reponse.status);
     }
 });
+
 // je vérifie si le formulaire est complet //
 const inputTitre = document.getElementById("titre");
 const inputCategorie = document.getElementById("categorie");
@@ -305,3 +317,5 @@ function afficherPhotosModale() {
         modalePhotos.appendChild(figure);
     }
 }
+
+
