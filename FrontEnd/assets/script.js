@@ -5,7 +5,7 @@ let works = [];
 // je vérifie si l'utilisateur est connecté (etape 5.3)//
 const token = localStorage.getItem("token");
 if (token) {
-    // je change login en logout
+    // je change login en logout 
     const loginItem = document.getElementById("login-item");
     loginItem.textContent = "logout";
 
@@ -90,7 +90,7 @@ async function getCategories(){
     button.addEventListener("click", function() {
         // étape a : je rends tous les boutons blancs//
     document.querySelectorAll(".filters button").forEach(btn => btn.classList.remove("clique"));
-        // étape b : je rends le bouton Tous vert//
+        // étape b : je rends le bouton cliqué Tous vert//
     button.classList.add("clique");
      // je garde seulement les travaux de cette catégorie//
     const worksFiltres = works.filter(function(work) {
@@ -159,19 +159,6 @@ btnRetour.addEventListener("click", function() {
     modaleGalerie.classList.remove("hidden");
 });
 
-// j'affiche les photos dans la modale //
-function afficherPhotosModale() {
-    const modalePhotos = document.getElementById("modale-photos");
-    modalePhotos.innerHTML = "";
-    
-    for (const work of works) {
-        const img = document.createElement("img");
-        img.src = work.imageUrl;
-        img.alt = work.title;
-        modalePhotos.appendChild(img);
-    }
-}
-
 ////////ETAPE 8////
 // je remplis le menu catégorie avec les données de l'API //
 async function remplirCategories() {
@@ -211,13 +198,13 @@ input.addEventListener("change", function(event) {
     document.querySelector("#zone-upload label").style.display = "none";
     document.querySelector("#zone-upload p").style.display = "none";
     document.getElementById("zone-upload").style.padding = "0";
-    verifierFormulaire();;
+    verifierFormulaire();
 });
 
 const form = document.getElementById("formulaire-ajout");
 form.addEventListener("submit", async function(event) {
     event.preventDefault();
-    // je vérifie si le formulaire est complet
+    // je vérifie si le formulaire est complet //
     if (!input.files[0] || !inputTitre.value || !inputCategorie.value) {
         document.getElementById("message-erreur-formulaire").style.display = "block";
         return;
@@ -271,6 +258,8 @@ function reinitialiserFormulaire() {
     document.querySelector("#zone-upload p").style.display = "block";
     document.getElementById("zone-upload").style.padding = "30px";
     document.getElementById("btn-valider").style.backgroundColor = "#ccc";
+    // je cache le message d'erreur //
+    document.getElementById("message-erreur-formulaire").style.display = "none";
 }
 
 ////// ETAPE 7 //////

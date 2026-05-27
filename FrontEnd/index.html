@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-	<!---- ETAPE 5-3 ---->
+	<!-- ETAPE 5-3 -->
 	<div id="bandeau-edition">
     <i class="fa-regular fa-pen-to-square"></i> Mode édition
 </div>
@@ -30,9 +30,9 @@
 	</nav>
 </header>
 <main>
-	<section id="introduction">
+	<div id="introduction">
 		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
+			<img src="./assets/images/sophie-bluel.png" alt="Sophie Bluel architecte d'intérieur">
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -40,7 +40,7 @@
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l'esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
-	</section>
+	</div>
 	<section id="portfolio">
 		<!--- ETAPE 5.3 ajoute bouton -->
     <div id="titre-portfolio">
@@ -99,7 +99,7 @@
 
         <div id="zone-upload">
             <i class="fa-regular fa-image" id="icone-upload"></i>
-			<img id="preview" style="display:none">
+			<img id="preview" src="./assets/images/sophie-bluel.png" alt="preview de l'image" style="display:none">
             <label for="input-image">+ Ajouter photo</label>
             <input type="file" id="input-image" name="image" accept="image/*">
             <p>jpg, png : 4mo max</p>
@@ -110,7 +110,7 @@
         <label for="categorie">Catégorie</label>
 <div class="select-container">
     <select id="categorie" name="category">
-        <option value="" label= ""></option>
+        <option label="Choisir une catégorie" value=""></option>
     </select>
     <i class="fa-solid fa-chevron-down"></i>
 	
