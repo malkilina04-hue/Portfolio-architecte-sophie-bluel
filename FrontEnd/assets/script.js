@@ -1,4 +1,3 @@
-
 // je mets works ici pour pouvoir l'utiliser dans toutes les fonctions//
 let works = [];
 
@@ -62,6 +61,13 @@ function afficherWorks(listeTravaux) {
 getWorks();
 
 ////Etapes 3////
+
+// j'éteins tous les boutons filtres, puis j'allume celui sur lequel j'ai cliqué //
+function activerBouton(boutonClique) {
+    document.querySelectorAll(".filters button").forEach(btn => btn.classList.remove("clique"));
+    boutonClique.classList.add("clique");
+}
+
 async function getCategories(){
     // j'appelle l'API pour avoir les catégories//
     const reponse = await fetch("http://localhost:5678/api/categories");
@@ -75,10 +81,9 @@ async function getCategories(){
     filters.appendChild(buttonTous);
     buttonTous.classList.add("clique");
     // quand on clique sur Tous j'affiche tous les travaux//
-    buttonTous.addEventListener("click", function() {
-    //je rends tous les boutons blancs et le bouton Tous vert//
-    document.querySelectorAll(".filters button").forEach(btn => btn.classList.remove("clique"));
-    buttonTous.classList.add("clique");
+        buttonTous.addEventListener("click", function() {
+        // je rends tous les boutons blancs et le bouton Tous vert //
+        activerBouton(buttonTous);
         afficherWorks(works);
     });
     // pour chaque catégorie je crée un bouton//
@@ -88,10 +93,8 @@ async function getCategories(){
         filters.appendChild(button);
         // au clic je filtre les travaux par catégorie//
     button.addEventListener("click", function() {
-        // étape a : je rends tous les boutons blancs//
-    document.querySelectorAll(".filters button").forEach(btn => btn.classList.remove("clique"));
-        // étape b : je rends le bouton cliqué Tous vert//
-    button.classList.add("clique");
+        // je rends tous les boutons blancs et le bouton cliqué vert //
+        activerBouton(button);
      // je garde seulement les travaux de cette catégorie//
     const worksFiltres = works.filter(function(work) {
         return work.categoryId === categorie.id;
@@ -132,22 +135,23 @@ btnModifierModal.addEventListener("click", function() {
     afficherPhotosModale(); // j'affiche les photos //
 });
 
-// je ferme la modale au clic sur la croix //
-btnFermer.addEventListener("click", function() {
+// je ferme la modale et je vide le formulaire //
+function fermerModale() {
     modale.classList.add("hidden");
     reinitialiserFormulaire();
+}
 
+// je ferme la modale au clic sur la croix //
+btnFermer.addEventListener("click", function() {
+    fermerModale();
 });
 
 // je ferme la modale au clic en dehors //
 modale.addEventListener("click", function(event) {
     if (event.target === modale) {
-        modale.classList.add("hidden");
-        reinitialiserFormulaire();
-
+        fermerModale();
     }
 });
-
 // au clic sur "Ajouter une photo" j'affiche le formulaire //
 btnAjouterPhoto.addEventListener("click", function() {
     modaleGalerie.classList.add("hidden");
@@ -227,8 +231,7 @@ form.addEventListener("submit", async function(event) {
         works.push(newWork);
         afficherWorks(works);
         afficherPhotosModale();
-        modale.classList.add("hidden");
-        reinitialiserFormulaire();
+        fermerModale();
     } else {
         console.log("Erreur status:", reponse.status);
     }
